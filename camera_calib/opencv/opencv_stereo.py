@@ -30,8 +30,10 @@ if __name__ == "__main__":
     if right.isOpened() is False:
         print("Could not open right camera")
         exit()
+    # Index counters for stored images
     ridx = 0
     lidx = 0
+    sidx = 0
 
     while True:
 
@@ -82,4 +84,8 @@ if __name__ == "__main__":
         if (key == ord('r')):
             cv2.imwrite(f"right/right_{ridx}.jpg", right_downsampled)
             ridx += 1
+        if (key == ord('s')):
+            cv2.imwrite(f"stereo/left/left_{sidx}.jpg", left_downsampled)
+            cv2.imwrite(f"stereo/right/right_{sidx}.jpg", right_downsampled)
+            sidx += 1
         
