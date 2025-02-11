@@ -7,8 +7,8 @@ import pickle
 
 ################ FIND CHESSBOARD CORNERS - OBJECT POINTS AND IMAGE POINTS #############################
 
-chessboardSize = (9,6)
-frameSize = (640,480)
+chessboardSize = (10,7)
+frameSize = (717,538)
 
 
 
@@ -29,7 +29,7 @@ objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
 
 
-images = glob.glob('/home/sysop/Desktop/stereo/left/*.jpg')
+images = glob.glob('/home/sysop/aquarium_jetson_nano/camera_calib/images/r/*.png')
 images.sort()
 
 for image in images:

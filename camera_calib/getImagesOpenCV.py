@@ -19,6 +19,7 @@ cap = cv2.VideoCapture(gst_string.format(camera_num=0, image_size=image_size, fr
 #    right = cv2.VideoCapture(gst_string.format(camera_num=1, image_size=image_size, #framerate=framerate), cv2.CAP_GSTREAMER )
 
 num = 0
+print(cap)
 print(cap.isOpened())
 while cap.isOpened():
 
@@ -30,8 +31,12 @@ while cap.isOpened():
 
     if k == 27:
         break
-    elif k == ord('s'): # wait for 's' key to save and exit
-        cv2.imwrite('images/img' + str(num) + '.png', img)
+    elif k == ord('l'): # wait for 's' key to save and exit
+        cv2.imwrite('images/l/l' + str(num) + '.png', img)
+        print("image saved!")
+        num += 1
+    elif k == ord('r'): # wait for 's' key to save and exit
+        cv2.imwrite('images/r/l' + str(num) + '.png', img)
         print("image saved!")
         num += 1
 
