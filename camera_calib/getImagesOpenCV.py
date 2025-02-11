@@ -12,7 +12,7 @@ nvarguscamerasrc sensor-id={camera_num} wbmode=0 aelock=true ispdigitalgainrange
     queue ! video/x-raw, format=BGRx ! videoconvert ! video/x-raw,format=BGR ! appsink
 '''
 
-cap = cv2.VideoCapture(gst_string.format(camera_num=0, image_size=image_size, framerate=framerate), cv2.CAP_GSTREAMER )
+cap = cv2.VideoCapture(gst_string.format(camera_num=1, image_size=image_size, framerate=framerate), cv2.CAP_GSTREAMER )
 
 # Open OpenCV camera
 #    left = cv2.VideoCapture(gst_string.format(camera_num=0, image_size=image_size, #framerate=framerate), cv2.CAP_GSTREAMER )

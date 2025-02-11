@@ -70,32 +70,61 @@ pickle.dump(dist, open( "dist.pkl", "wb" ))
 
 ############## UNDISTORTION #####################################################
 
-img = cv.imread('cali5.png')
-h,  w = img.shape[:2]
-newCameraMatrix, roi = cv.getOptimalNewCameraMatrix(cameraMatrix, dist, (w,h), 1, (w,h))
+idx = 0
 
+for image in images:
+    print(image)
+    img = cv.imread(image)
+    h,  w = img.shape[:2]
+    newCameraMatrix, roi = cv.getOptimalNewCameraMatrix(cameraMatrix, dist, (w,h), 1, (w,h))
+    cv.imwrite('caliImages/r/caliResult_' + str(idx) + '_0.png', img)
+
+
+    # Undistort
+    dst = cv.undistort(img, cameraMatrix, dist, None, newCameraMatrix)
+
+    # crop the image
+    x, y, w, h = roi
+    dst = dst[y:y+h, x:x+w]
+    cv.imwrite('caliImages/r/caliResult_' + str(idx) + '_1.png', dst)
+
+
+
+    # Undistort with Remapping
+    mapx, mapy = cv.initUndistortRectifyMap(cameraMatrix, dist, None, newCameraMatrix, (w,h), 5)
+    dst = cv.remap(img, mapx, mapy, cv.INTER_LINEAR)
+
+    # crop the image
+    x, y, w, h = roi
+    dst = dst[y:y+h, x:x+w]
+    cv.imwrite('caliImages/r/caliResult_' + str(idx) + '_2.png', dst)
+    
+    idx += 1
+
+#img = cv.imread('images/l/l10.png')
+#h,  w = img.shape[:2]
+#newCameraMatrix, roi = cv.getOptimalNewCameraMatrix(cameraMatrix, dist, (w,h), 1, (w,h))
+#cv.imwrite('caliResult0.png', img)
 
 
 # Undistort
-dst = cv.undistort(img, cameraMatrix, dist, None, newCameraMatrix)
+#dst = cv.undistort(img, cameraMatrix, dist, None, newCameraMatrix)
 
 # crop the image
-x, y, w, h = roi
-dst = dst[y:y+h, x:x+w]
-cv.imwrite('caliResult1.png', dst)
+#x, y, w, h = roi
+#dst = dst[y:y+h, x:x+w]
+#cv.imwrite('caliResult1.png', dst)
 
 
 
 # Undistort with Remapping
-mapx, mapy = cv.initUndistortRectifyMap(cameraMatrix, dist, None, newCameraMatrix, (w,h), 5)
-dst = cv.remap(img, mapx, mapy, cv.INTER_LINEAR)
+#mapx, mapy = cv.initUndistortRectifyMap(cameraMatrix, dist, None, newCameraMatrix, (w,h), 5)
+#dst = cv.remap(img, mapx, mapy, cv.INTER_LINEAR)
 
 # crop the image
-x, y, w, h = roi
-dst = dst[y:y+h, x:x+w]
-cv.imwrite('caliResult2.png', dst)
-
-
+#x, y, w, h = roi
+#dst = dst[y:y+h, x:x+w]
+#cv.imwrite('caliResult2.png', dst)
 
 
 # Reprojection Error
