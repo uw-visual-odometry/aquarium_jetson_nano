@@ -26,8 +26,8 @@ imgpointsL = [] # 2d points in image plane.
 imgpointsR = [] # 2d points in image plane.
 
 
-imagesLeft = sorted(glob.glob('/home/sysop/aquarium_jetson_nano/camera_calib/images/both/left/l*.png'))
-imagesRight = sorted(glob.glob('/home/sysop/aquarium_jetson_nano/camera_calib/images/both/right/r*.png'))
+imagesLeft = sorted(glob.glob('/home/sysop/Desktop/images/images/both/left/l*.png'))
+imagesRight = sorted(glob.glob('/home/sysop/Desktop/images/images/both/right/r*.png'))
 
 for imgLeft, imgRight in zip(imagesLeft, imagesRight):
 
@@ -87,7 +87,7 @@ criteria_stereo= (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 
 # This step is performed to transformation between the two cameras and calculate Essential and Fundamenatl matrix
 retStereo, newCameraMatrixL, distL, newCameraMatrixR, distR, rot, trans, essentialMatrix, fundamentalMatrix = cv.stereoCalibrate(objpoints, imgpointsL, imgpointsR, newCameraMatrixL, distL, newCameraMatrixR, distR, grayL.shape[::-1], criteria_stereo, flags)
-
+print(trans)
 
 
 
