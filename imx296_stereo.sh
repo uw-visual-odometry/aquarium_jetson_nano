@@ -15,7 +15,7 @@
 . imx296_constants.sh
 
 # Valid values: file, rtsp or screen
-OUTPUT=screen
+OUTPUT=file
 
 if [ $OUTPUT == "rtsp" ]; then
         GST_OUTPUT="x264enc speed-preset=veryfast tune=zerolatency ! h264parse ! rtspclientsink location=rtsp://localhost:8554/stereo"

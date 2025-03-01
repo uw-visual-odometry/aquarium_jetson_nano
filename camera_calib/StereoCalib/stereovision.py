@@ -2,6 +2,8 @@ import numpy as np
 import cv2
 
 image_size = (540,720)
+image_size = (480,640)
+
 framerate = 30
 # Camera parameters to undistort and rectify images
 cv_file = cv2.FileStorage()

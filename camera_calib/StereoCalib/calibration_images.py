@@ -1,6 +1,8 @@
 import cv2
+import os
 
-image_size = (540,720)
+
+image_size = (1080,1440)
 framerate = 30
 #cap = cv2.VideoCapture(0)
 #cap2 = cv2.VideoCapture(2)
@@ -13,6 +15,15 @@ nvarguscamerasrc sensor-id={camera_num} wbmode=0 aelock=true ispdigitalgainrange
 capL = cv2.VideoCapture(gst_string.format(camera_num=0, image_size=image_size, framerate=framerate), cv2.CAP_GSTREAMER )
 capR = cv2.VideoCapture(gst_string.format(camera_num=1, image_size=image_size, framerate=framerate), cv2.CAP_GSTREAMER )
 num = 0
+folder_num = 7
+
+left_dir = f"../bothImages/left{folder_num}/"
+right_dir = f"../bothImages/right{folder_num}/"
+if not os.path.exists(left_dir):
+    os.makedirs(left_dir)
+if not os.path.exists(right_dir):
+    os.makedirs(right_dir)
+
 
 while capL.isOpened() and capR.isOpened():
 
@@ -24,8 +35,8 @@ while capL.isOpened() and capR.isOpened():
     if k == 27:
         break
     elif k == ord('s'): # wait for 's' key to save and exit
-        cv2.imwrite('/home/sysop/aquarium_jetson_nano/camera_calib/images/both/left/l' + str(num) + '.png', left)
-        cv2.imwrite('/home/sysop/aquarium_jetson_nano/camera_calib/images/both/right/r' + str(num) + '.png', right)
+        cv2.imwrite(left_dir + 'l' + str(num) + '.png', left)
+        cv2.imwrite(right_dir + 'r' + str(num) + '.png', right)
         print("images saved!")
         num += 1
 
