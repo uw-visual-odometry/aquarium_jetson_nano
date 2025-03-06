@@ -75,11 +75,11 @@ for imgLeft, imgRight in zip(imagesLeft, imagesRight):
         imgpointsR.append(cornersR)
 
         # Draw and display the corners
-        cv.drawChessboardCorners(imgL, CHECKERBOARD, cornersL, retL)
-        cv.imshow('img left', imgL)
-        cv.drawChessboardCorners(imgR, CHECKERBOARD, cornersR, retR)
-        cv.imshow('img right', imgR)
-        cv.waitKey(1)
+        # cv.drawChessboardCorners(imgL, CHECKERBOARD, cornersL, retL)
+        # cv.imshow('img left', imgL)
+        # cv.drawChessboardCorners(imgR, CHECKERBOARD, cornersR, retR)
+        # cv.imshow('img right', imgR)
+        # cv.waitKey(1)
     else:
     	print(imgLeft)
 
@@ -164,6 +164,8 @@ print("K1=np.array(" + str(K1.tolist()) + ")")
 print("D1=np.array(" + str(D1.tolist()) + ")")
 print("K2=np.array(" + str(K2.tolist()) + ")")
 print("D2=np.array(" + str(D2.tolist()) + ")")
+print("Rotation=np.array(" + str(R.tolist()) + ")")
+print("Translation=np.array(" + str(T.tolist()) + ")")
 
 # retL, cameraMatrixL, distL, rvecsL, tvecsL = cv.calibrateCamera(objpoints, imgpointsL, frameSize, None, None)
 # heightL, widthL, channelsL = imgL.shape
