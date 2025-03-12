@@ -224,6 +224,7 @@ stereoMapL = cv.fisheye.initUndistortRectifyMap(K_left, D_left, rectL, projMatri
 stereoMapR = cv.fisheye.initUndistortRectifyMap(K_right, D_right, rectR, projMatrixR, grayR.shape[::-1], cv.CV_16SC2)
 
 print("Saving!")
+
 cv_file = cv.FileStorage('stereoMap.xml', cv.FILE_STORAGE_WRITE)
 
 cv_file.write('stereoMapL_x',stereoMapL[0])
@@ -232,3 +233,17 @@ cv_file.write('stereoMapR_x',stereoMapR[0])
 cv_file.write('stereoMapR_y',stereoMapR[1])
 
 cv_file.release()
+
+cv_file2 = cv.FileStorage("totalParams.txt", cv.FILE_STORAGE_WRITE)
+cv_file2.write('K1',K1)
+cv_file2.write('K2',K2)
+cv_file2.write('D1',D1)
+cv_file2.write('D2',D2)
+cv_file2.write('rectL',rectL)
+cv_file2.write('rectR',rectR)
+cv_file2.write('projMatrixL',projMatrixL)
+cv_file2.write('projMatrixR',projMatrixR)
+cv_file2.write('Q',Q)
+
+cv_file2.release()
+
