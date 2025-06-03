@@ -1,0 +1,5 @@
+# Measuring of the test tank and pole
+Tesk tank length: 118.5 inches
+Tesk tank width: 111.5 inches
+pole length: 81 inches
+

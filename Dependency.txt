@@ -1,0 +1,13 @@
+Install: 
+- GStreamer Core Library version 1.20.3
+- Docker version 27.5.1, build 9f9e405
+- Python 3.10.12 
+    - opencv 4.8.0
+    - numpy 1.23.4
+    - gpiod 2.2.3
+    - argparse 1.1
+
+
+
+
+
